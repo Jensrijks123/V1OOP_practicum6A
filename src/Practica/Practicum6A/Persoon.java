@@ -75,7 +75,18 @@ public class Persoon {
         return verkoop;
     }
 
+    // opdracht 6b misher
+    public Game zoekGameOpNaam(String spelNaam) {
+        Game gevondenGame = null;
+        for (Game spel : mijnGames) {
+            if (spel.getNaam().equals(spelNaam)) {
+                gevondenGame = spel;
 
+            }
+
+        }
+        return gevondenGame;
+    }
 
     public String toString() {
         String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:";
