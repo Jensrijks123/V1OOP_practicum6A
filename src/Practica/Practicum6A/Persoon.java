@@ -87,6 +87,14 @@ public class Persoon {
         }
         return gevondenGame;
     }
+    public ArrayList<Game> bepaalGamesNietInBezit(ArrayList<Game> teKoop) {
+        for (Game game : teKoop) {
+            if (game.getNaam().equals(game.getNaam())) {
+                teKoop.remove(game);
+            }
+        }
+        return teKoop;
+    }
 
     public String toString() {
         String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:";
