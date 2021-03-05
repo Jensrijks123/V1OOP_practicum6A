@@ -12,6 +12,7 @@ public class Persoon {
         naam = nm;
         budget = bud;
         mijnGames = new ArrayList<Game>();
+
     }
 
     public double getBudget() {
@@ -71,11 +72,10 @@ public class Persoon {
                 }
             }
         }
-
-
-
         return verkoop;
     }
+
+
 
     public String toString() {
         String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:";
