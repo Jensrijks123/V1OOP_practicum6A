@@ -6,12 +6,12 @@ public class Persoon {
 
     private String naam;
     private double budget;
-    private Game mijnGames;
-    private ArrayList<Game> games;
+    private ArrayList<Game> mijnGames;
 
     public Persoon(String nm, double bud) {
         naam = nm;
         budget = bud;
+        mijnGames = new ArrayList<Game>();
     }
 
     public double getBudget() {
@@ -19,22 +19,70 @@ public class Persoon {
     }
 
     public boolean koop(Game g) {
-        if (budget - mijnGames.huidigeWaarde() >= 0) {
-            if (naam ) {
+        boolean check = false;
+        boolean koop = false;
 
+        for (Game game : mijnGames) {
+            if (game.getNaam().equals(g.getNaam())) {
+                check = true;
+                koop = false;
             }
         }
 
-        return false;
+        if (!check) {
+            if (budget - g.huidigeWaarde() >= 0){
+                mijnGames.add(g);
+                budget = budget - g.huidigeWaarde();
+                koop = true;
+            }
+        }
+
+        return koop;
     }
 
     public boolean verkoop(Game g, Persoon koper) {
+        boolean checkVerkoper = false;
+        boolean checkKoper = false;
+        boolean verkoop = false;
 
-        return false;
+        // Verkoper heeft spel check
+        for (Game game : mijnGames) {
+            if (game.getNaam().equals(g.getNaam())) {
+                checkVerkoper = true;
+            }
+        }
+
+        if (checkVerkoper) {
+            // koper heeft spel check
+            for (Game gameK : koper.mijnGames) {
+                if (gameK.getNaam().equals(g.getNaam())) {
+                    checkKoper = true;
+                    verkoop = false;
+                }
+            }
+
+            if (!checkKoper) {
+                if (koper.budget - g.huidigeWaarde() >= 0) {
+                    koper.mijnGames.add(g);
+                    mijnGames.remove(g);
+                    budget = budget + g.huidigeWaarde();
+                    koper.budget = koper.budget - g.huidigeWaarde();
+                    verkoop = true;
+                }
+            }
+        }
+
+
+
+        return verkoop;
     }
 
     public String toString() {
-        String s = naam + " heeft een budget van " + budget + " en bezit de volgende games: \n" + mijnGames;
+        String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:";
+        for (Game game : mijnGames) {
+            s = s + "\n" +game.toString();
+        }
+
         return s;
     }
 }

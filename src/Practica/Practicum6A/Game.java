@@ -27,11 +27,20 @@ public class Game {
     }
 
     public boolean equals(Object andereObject) {
+        boolean gelijkeObjecten = false;
 
-        return true;
+        if (andereObject instanceof Game) {
+            Game andereGame = (Game) andereObject;
+
+            if (this.naam.equals(andereGame.naam) && this.releaseJaar == andereGame.releaseJaar ) {
+                gelijkeObjecten = true;
+            }
+        }
+        return gelijkeObjecten;
     }
 
     public String toString() {
-        return "Game{" + "naam='" + naam + '\'' + ", releaseJaar=" + releaseJaar + ", nieuwprijs=" + nieuwprijs + '}';
+        String s = naam + ", uitgegeven in " + releaseJaar + "; nieuwprijs: " + "€" + String.format("%.2f", nieuwprijs) + " nu voor: €" + String.format("%.2f", huidigeWaarde());
+        return s;
     }
 }
