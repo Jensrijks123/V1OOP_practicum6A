@@ -74,8 +74,13 @@ public class Persoon {
         }
         return verkoop;
     }
+    /*
 
-    // opdracht 6b misher
+    Opdracht 6B
+
+     */
+
+    // opdracht 6b Misher
     public Game zoekGameOpNaam(String spelNaam) {
         Game gevondenGame = null;
         for (Game spel : mijnGames) {
@@ -87,6 +92,8 @@ public class Persoon {
         }
         return gevondenGame;
     }
+
+    // opdracht 6b Jens
     public ArrayList<Game> bepaalGamesNietInBezit(ArrayList<Game> teKoop) {
         for (Game game : teKoop) {
             if (game.getNaam().equals(game.getNaam())) {
@@ -95,6 +102,12 @@ public class Persoon {
         }
         return teKoop;
     }
+
+        /*
+
+    Opdracht 6B
+
+     */
 
     public String toString() {
         String s = naam + " heeft een budget van €" + String.format("%.2f", budget) + " en bezit de volgende games:";
